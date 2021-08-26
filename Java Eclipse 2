@@ -1,0 +1,94 @@
+Java project, the project is about making a calculations for basic statistics, which is mean, median, and modus. 
+Consists of 2 classes. 
+
+
+** MAIN CLASS ** 
+
+// JAVA ECLIPSE 2.
+
+// class main 
+import java.util.*; 
+public class main { // Main class
+	
+	static Scanner input = new Scanner(System.in); // Input module. 
+    
+	public static void main(String[] args) {
+		
+		MMM allop = new MMM();
+		allop.alloperations();
+		
+		 // uda tinggal sebut class dan panggil method aja. 
+	  }	
+	}
+
+	
+
+	** MMM CLASS ** 
+  
+// JAVA ECLIPSE 2.
+
+import java.util.Scanner; // ini 
+public class MMM { // Class mean median modus nya. 
+	static Scanner input = new Scanner(System.in); // Input module. 
+	
+	
+	public void alloperations() { // Objek
+		System.out.println("STATISTIC DESCRIPTIVE");
+		System.out.println("Masukkan jumlah Index :");
+	    int x =  input.nextInt();
+	    
+	    // PAKE ARRAY
+	    // AWALAN MODUS.
+	    int a[] = new int [x]; // deklarasi variable untuk kita pakai di method ini. 
+	    int c = a[0];
+	    int b = 0;
+	    int hasil = 0, besar = 0;
+	    
+	    System.out.println("Input your number (in order): "); 
+	    for(int i = 0; i < a.length; i++) { // buat perulangan pas masukin nilai. 
+	    	a[i]= input.nextInt(); // array a dan indeks inputan. 
+	    } 
+	    
+	    // PROSES KALKULASI MODUS.
+	    for(int i = 0; i < a.length; i++) { 
+	    	if(a[i] == c) {
+	         if(b > besar) { // cek kalo ada indeks yang berjumlah lebih dari 1.  
+	    			besar = b;
+	    			hasil = c;
+	    		}
+	    	 }
+                c = a[i]; // c menampung hasil cek akhir dari seluruh indeks.
+                b = 1; // nilai b naik menjadi 1. 
+	   }
+	    System.out.println("Modus = "+ hasil);
+	    
+	    
+	    // PROSES MEDIAN.
+	    // uda gaperlu modul buat masukin angka lagi.
+	    float median = 0.0f; 
+	    int bil = a.length%2; 
+	    if( bil == 1) {
+	    	int posisi = x / 2; // 10 
+	    	median = a[posisi] + a[posisi+1] / 2; // indeks ke 5 dan ke 6. kalo inp=10
+	    	System.out.printf("Median : " + median);
+	    	} // kalo bilangan inputan nya berjumlah genap 
+	    
+	    else {
+	    	int posisi = x / 2;
+	    	median = a[posisi]; // sudah jelas nilai tengah nya yang mana. 
+	    	System.out.printf("Median : " + median);
+	    } // kalo bilangan inputan nya berjumlah ganjil. 
+	    
+	    
+	    //PROSES MEAN.
+	    float jumlah = 0;
+	    for(int i = 0; i < a.length; i++) {
+	    	jumlah+=a[i]; // semua isian indeks di tambah ++. 
+	    } // hasil jumlah nya kita simpan di var jumlah, 
+	    
+	    float rata2 = jumlah / x; // cari hasil rata" nya. 
+	    System.out.print("\n");
+	    System.out.println("Mean :" + rata2);
+	}
+ // yeeaa boi. 
+}
