@@ -1,0 +1,119 @@
+Java project, the project is about making a console for encryption and decryption with java. 
+Consists of 4 classes. 
+Using 3 all OOP concepts : abstract, inheritance, encapsulation. 
+
+** MAIN CLASS ** 
+ 
+import java.util.Scanner;
+
+public class MainJE2 { // main class enkripsi baru
+
+	Scanner input = new Scanner(System.in);
+	 
+	// 1
+	static InheritanceJE2 inhe = new InheritanceJE2();
+	static EnkapsulasiJE2 enk = new EnkapsulasiJE2();
+	
+	public static void main(String[] args) {
+		
+		enk.menuawal();
+	}
+}
+
+** CLASS INHERITANCE ** 
+import java.util.Scanner;
+
+// 4
+public class InheritanceJE2 extends AbstractJE2 { // tempat proses enkripsi & dekripsi nya.
+
+	EnkapsulasiJE2 a = new EnkapsulasiJE2();
+	
+	Scanner input = new Scanner(System.in);
+  
+	@Override
+	public void enkripsi(String plain, String key) { // enkrip plain dari class enkap + key dari class enkap juga.
+	
+	}
+	
+	@Override
+	public void dekripsi(String plain, String key) { // ini belakangan aja
+	
+	}
+
+	@Override
+	public void printcipher() {
+		
+	}
+
+	@Override
+	public void printplain() {
+			
+}
+}
+
+** CLASS ENKAPSULASI ** 
+
+// 2 
+
+import java.util.Scanner;
+
+public class EnkapsulasiJE2 { // tempat bikin menu sama input dengan enkapsulasi.
+	
+	InheritanceJE2 inh = new InheritanceJE2();
+	
+	Scanner input = new Scanner(System.in);
+	 
+	private String plain;
+	private String key;
+	private String cipher; // gatau apa.
+	
+	
+	// nanti hasil inputan dari sini dibawa ke class abs & inheri
+	public void menuawal() {
+		
+		System.out.println("Enkripsi - Dekripsi Console App");
+		System.out.println("Plain text :");
+		this.plain = input.next();
+		set_text(); // digedein
+		
+		System.out.println("Key text :");
+		this.key = input.next();
+		set_key();
+
+	}
+	
+	//setter 
+	public void set_text() {
+		this.plain = plain.toUpperCase(); // nanti panggil ini pas di output setelah cipher text nya
+	}
+	
+	public void set_key() {
+		this.key = key.toUpperCase();
+	}
+	
+	// getter
+	public String get_text() {
+		return this.plain;
+	}
+
+	public String get_key() {
+		return this.key;
+	}
+}
+
+** CLASS ABSTRACT ** 
+
+// 3
+public abstract class AbstractJE2 { // abstract method
+
+	public abstract void enkripsi(String plain, String key);
+	public abstract void dekripsi(String plain, String key);
+    public abstract void printcipher();
+    public abstract void printplain();
+
+}
+
+
+
+        
+        
