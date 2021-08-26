@@ -1,0 +1,118 @@
+Java project, the project is about making a program to sorting a data, the data is number. 
+Consists of 4 classes. 
+Using OOP inheritance concepts. 
+
+** MAIN CLASS ** 
+
+import java.util.*;
+
+public class MainClass {
+
+	static Scanner input = new Scanner(System.in); // input module integer 
+	
+	  static bubble babel = new bubble(); // assign child class nya.
+	  static selection select = new selection();
+	
+	public static void main(String[] args) { // main class 
+		
+		// Proses input indeks nya (jumlah indeks dan isi data array nya)
+		// arr = array nya
+		// size = ukuran dari array (jumlah indeks nya)
+	
+		
+		int a = 100; // inisialisasi data
+		int size, arr[] = new int[a];
+
+		System.out.println("Masukkan jumlah array :");
+	    size = input.nextInt();
+	    
+		for(int i = 0; i < size; i++ ) { // clear.
+			System.out.print("Masukkan array ke - " + i + " : "); // indeks counter nya diitung dari 0.
+		    arr[i] = input.nextInt();
+		    
+		}
+		
+	   System.out.print("\n");
+	   babel.swap1(arr, size); // call method from class bubble.
+	   System.out.print("\n");
+	   select.swap2(arr, size); // call method from class selection.   
+	}
+}
+
+
+** CLASS BUBBLE ** 
+
+public class bubble extends sorting { // tempat bubble sorting. -> child class.
+	
+     public int swap1(int arr[], int size) {// bubble sort process.
+	
+    	super.swap1(arr, size); // super -> reference ke parent class, method bubble sort.
+		return 0; 
+	}
+} // bubble sort
+
+
+** CLASS SELECTION **
+
+public class selection extends sorting { // tempat selection sorting -> child class.
+
+	 public int swap2(int arr[], int size) { // selection sort process.
+		
+		super.swap2(arr, size); // super -> reference ke parent class, refer ke method selection sort.
+		return 0;
+		
+	}
+} // selection sort.
+
+
+
+** SORTING CLASS ** 
+
+public class sorting { // parent class 
+
+	// sorting class.
+	protected int swap1(int arr[], int size){ // ini method untuk yang Bubble sort.
+     
+		int tukar;					         //satu-satu nukernya -> 21354-12354-12345.
+		for (int i = 0; i < size; i++) {
+			for (int j = 0; j < size; j++) { 
+				if (arr[j] > arr[j + 1]) {
+					tukar = arr[j];
+					arr[j] = arr[j + 1];
+					arr[j + 1] = tukar;
+      }
+   }
+}
+		System.out.print("Hasil Bubble Sorting : "); // clear.
+		for(int k = 1; k <= size; k++) {
+			System.out.print(arr[k] + " ");
+		}
+		return 0; 
+	}
+		
+
+	protected int swap2(int arr[], int size) {// ini method untuk yang Selection sort.
+		
+		int tukar, posisi;				      // nuker nya ke tempat yang uda diketahui.			 
+		for (int i = 0; i < (size - 1); i++) { 
+			posisi = i;                       // inisialisasi var posisi = 0
+			for (int j = i + 1; j < size; j++) { 
+				if (arr[posisi] > arr[j]) {   // apabila arr pada indeks ke 0 > daripada arr indeks ke 1.
+					posisi = j;               // indeks array ke 0 diisi dengan arr indeks ke 1. -> tukar posisi.
+				}
+			}
+			
+			if (posisi != i) {
+				tukar = arr[i];               // var posisi akan dicek dengan indeks" yang lain, apabila sepanjang array of int ada yang >
+				arr[i] = arr[posisi]; 
+				arr[posisi] = tukar;
+	}
+}
+		System.out.print("Hasil Selection Sorting : "); // clear. 
+		for(int k = 1; k <= size; k++) {
+			System.out.print(arr[k] + " ");
+		}
+        return 0;                                          
+	}
+} 
+
