@@ -1,0 +1,149 @@
+Java project, the project is about making a list of array in java using array list, and make a program to generate a factorial number. 
+Consists of 4 classes. 
+Using 2 OOP concepts which is encapsulation and interface. 
+
+
+** MAIN CLASS ** 
+
+// JAVA NUMBER 
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class mainjavanum { // main class 
+
+	public static void main(String[] args) {
+		
+		enkapnum enkaps = new enkapnum();
+		enkaps.menuinput(); // method menu.
+	}
+} 
+
+** CLASS ENKAPNNUM ** 
+
+	import java.util.ArrayList;
+	import java.util.Scanner;
+	
+	public class enkapnum { // class enkap java number
+	 // using enkapsulasi buat inputan user.
+		
+		implementclass imp = new implementclass();
+		
+		Scanner input = new Scanner(System.in);     
+		
+		private int pilihan;
+		private int awal = 0;
+	    private int akhir = 0;
+	    private int masook = 0;
+		
+		public void menuinput() {
+		System.out.println("=======House of Number=======");
+		System.out.println("1. Prime Number");
+		System.out.println("2. Factorial Number");
+		System.out.print("Pilih menu :");
+		this.pilihan = input.nextInt();
+		
+		
+		switch(pilihan) { // menu selection.
+		
+		case 1:   
+			System.out.print("Starting Number :");
+		    this.awal = input.nextInt();
+			
+			System.out.print("End Number :");
+		    this.akhir = input.nextInt();
+			
+			imp.ArrayList1(awal,akhir);
+			break;
+			
+			
+		case 2: 
+			System.out.print("Your Number :"); 
+			this.masook = input.nextInt(); 
+			
+			imp.faktorialnumber(masook); // 78
+			break;
+		} 
+		
+	}
+	} 
+  
+  ** CLASS IMPLEMENTCLASS JAVA ** 
+  
+import java.util.ArrayList;
+import java.util.Scanner;
+
+// class implementasi interface
+
+public class implementclass implements menu1dan2 {
+	Scanner input = new Scanner(System.in);     
+	
+
+	@Override
+	public void ArrayList1(int awal,int akhir) {
+	
+		System.out.println(findprimes(awal,akhir));
+	}
+
+	public static ArrayList<Integer> findprimes(int awal, int akhir) {
+	     ArrayList<Integer> primes = new ArrayList<Integer>();   // array list method
+			
+			for(int n = awal; n < akhir; n++) {
+				boolean prime = true;
+				
+				int i = 2;
+				while(i <= n/2) {
+					if(n % i == 0) { // cek kalo dia genap.
+						prime = false;
+						break;
+					}
+					i++;
+				}
+				
+				if(prime) { // prime = true -> maka ia angka ganjil == bil primer. 
+					primes.add(n); // nambahin deret bilangan primer ke list nya. ->> fungsi dasar dari arraylist.
+				}
+			}
+			return primes;
+		}
+	
+	
+	public void faktorialnumber(int masook) { // opt 2 
+	
+		if(masook == 7) { // input = 7.
+			int hasil1 = 7*6*5*4*3*2*1;
+			System.out.println("The factorial of 7 is : " + hasil1);
+		}
+		
+		else if(masook == 4) {
+			int hasil2 = 4*3*2*1;
+			System.out.println("The factorial of 4 is : " + hasil2);
+		}
+		
+		else if(masook == 6) {
+			int hasil3 = 6*5*4*3*2*1;
+			System.out.println("The factorial of 6 is : " + hasil3);
+		}
+		
+		else if(masook == 8) {
+			int hasil4 = 8*7*6*5*4*3*2*1;
+			System.out.println("The factorial of 8 is : " + hasil4);
+		}
+	} 
+} 
+	
+
+** CLASS NUMINTERFACE ** 
+
+import java.util.ArrayList; 
+
+// Interface method 
+        interface menu1dan2 {
+	   
+		void ArrayList1(int awal, int akhir); // opt 1
+		void faktorialnumber(int masook); // opt 2
+    
+}
+        
+        
+
