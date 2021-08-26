@@ -1,0 +1,263 @@
+Java project, the project is about making geometry calculations. 
+Consists of 3 classes. 
+Using Encapsulation concepts of OOP, to hide data. 
+
+
+** MAIN CLASS ** 
+
+import java.util.*;
+public class mainclass {
+	
+	static Scanner input = new Scanner(System.in); // input module
+	public static void main(String[] args) {
+		
+		System.out.println("Bangun Ruang");
+        System.out.println("1. Kubus");
+        System.out.println("2. Balok");
+        System.out.println("3. Tabung");
+        System.out.println("4. Bola");
+        
+        //  input pilihan  
+        System.out.print("Masukkan pilihan anda :"); 
+        int pil = input.nextInt();
+        
+        gettersetter b = new gettersetter();
+        
+        switch(pil) {
+        case 1:
+        	// input data kubus
+        	System.out.println("Masukkan panjang sisi :");
+    		int sisi = input.nextInt();
+    		b.set_kubus(sisi);
+    		
+    		// print hasil kubus
+    		System.out.println("Volume kubus : " + b.get_vol_kubus());
+    		System.out.println("Luas kubus : " + b.get_luas_kubus());
+            break;
+        
+        case 2: 
+        	// input data balok
+        	System.out.println("Masukkan panjang : ");
+    		int pjg = input.nextInt();
+    		System.out.println("Masukkan tinggi : ");
+    		int tgi = input.nextInt();
+    		System.out.println("Masukkan lebar : ");
+    		int lbr = input.nextInt();
+    		
+    		// print hasil balok
+    		b.set_balok(pjg, tgi, lbr);
+    		System.out.println("Volume balok : " + b.get_vol_balok());
+    		System.out.println("Luas balok : " + b.get_luas_balok());
+        	break;
+        	
+        case 3:
+        	// input data tabung
+        	System.out.print("Masukkan nilai R : "); // jari jari 
+    		int r = input.nextInt();
+    		System.out.print("Masukkan nilai T : "); // tinggi 
+    		int t = input.nextInt();
+    		
+    		// print hasil tabung
+    		b.set_tabung(r, t);
+    		System.out.println("Volume tabung : " + b.get_vol_tabung());
+    		System.out.println("Luas tabung  : " + b.get_luas_tabung());
+        	break;
+        	
+        case 4:
+        	// input data bola
+        	System.out.println("Masukkan nilai jari - jari : ");
+    		int jari2 = input.nextInt();
+    		
+    		// print hasil bola 
+    		b.set_bola(jari2);
+    		System.out.println("Volume bola : " + b.get_vol_bola());
+    		System.out.println("Luas bola : " + b.get_luas_bola());
+        	break;
+        	
+        default:
+        	System.out.println("Maaf pilihan nya ga ada kak");
+        	break;
+        }
+	}
+}
+
+** CLASS GETTER SETTER ** 
+
+public class gettersetter { // pusat kalkulasi enkapsulasi dengan metode getter setter.
+	
+	// variabel private, cuman bisa di akses di class ini. -> encapsule. 
+	
+	// private class kubus
+	private int vol_kubus;
+	private int luas_kubus;
+	
+	// private class balok 
+	private int vol_balok;
+	private int luas_balok;
+	
+	// private class tabung
+	private float vol_tabung;
+	private float luas_tabung;
+	
+	// private class bola 
+	private float vol_bola;
+	private float luas_bola;
+	 
+	
+	// deklarasi getter bola. -> return method nya.
+	
+	public int get_vol_kubus() { // 1
+		return vol_kubus;
+	}
+	
+	public int get_luas_kubus() {
+		return luas_kubus;
+	}
+	
+	public int get_vol_balok() { // 2
+		return vol_balok;
+	}
+	 
+	public int get_luas_balok() {
+		return luas_balok;
+	}
+	
+	public float get_vol_tabung() { // 3
+		return vol_tabung;
+	}
+	
+	public float get_luas_tabung() { 
+		return luas_tabung;
+	}
+	
+	public float get_vol_bola() { // 4
+		return vol_bola;
+	}
+	
+	public float get_luas_bola() { 
+		return luas_bola;
+		
+	}
+	
+	
+	
+	public void set_kubus(int sisi) { // 1
+		this.luas_kubus = 6 * sisi * sisi;
+		this.vol_kubus = sisi * sisi * sisi;
+	}
+	
+	public void set_balok(int pjg, int tgi, int lbr) { // 2
+		int pl = pjg * lbr;
+		int pt = pjg * tgi;
+		int lt = lbr * tgi;
+		this.luas_balok = ( pl + pt + lt) * 2;
+		this.vol_balok = pjg * lbr * tgi;
+		
+	}
+	
+	public void set_tabung(int r, int t) { // 3
+		float pi = 3.14f;
+		int r2 = r * r;
+		int rt = r + t;
+		this.luas_tabung = (pi * r * rt) * 2;
+		this.vol_tabung = pi * r2 * t;
+	}
+	
+	public void set_bola(int jari2) { // 4
+	int r3 = jari2 * jari2 * jari2;
+	int r2 = jari2 * jari2;
+	float pi = 3.14f;
+	this.luas_bola = pi * r2 * 4;
+	this.vol_bola = 4/3 * pi * r3;
+	} 
+	
+	// okss
+	
+	
+	
+	** CLASS HITUNG BARUANG ** 
+  
+import java.util.*;
+public class hitungBaruang {
+
+	static Scanner input = new Scanner(System.in);
+	
+	public void kubus() {
+	
+		System.out.println("Masukkan panjang sisi :");
+		int sisi = input.nextInt();
+	   
+		// proses kalkulasi volume kubus
+	    int volkubus = sisi * sisi * sisi;
+	    
+	    // proses kalkulasi luas kubus
+	    int luaskubus = 6 * sisi * sisi;
+	    
+	    // hasil output volume dan luas kubus 
+	    System.out.println("Volume     : " + volkubus);
+	    System.out.println("Luas       : " + luaskubus);
+	    
+	}
+	public void balok() {
+		System.out.println("Masukkan panjang : ");
+		int pjg = input.nextInt();
+		System.out.println("Masukkan tinggi : ");
+		int tgi = input.nextInt();
+		System.out.println("Masukkan lebar : ");
+		int lbr = input.nextInt();
+		
+		// proses kalkulasi volume balok
+		int volbalok = pjg * lbr * tgi;
+		
+		// proses kalkulasi luas balok 
+		int pl = pjg * lbr;
+		int pt = pjg * tgi;
+		int lt = lbr * tgi;
+		int luasbalok = ( pl + pt + lt ) * 2;
+		
+		// hasil output volume dan luas balok 
+		System.out.println("Volume balok     : " + volbalok);
+		System.out.println("Luas balok       : " + luasbalok);
+	}
+	
+	public void tabung() {
+		System.out.print("Masukkan nilai R : "); // jari jari 
+		int r = input.nextInt();
+		System.out.print("Masukkan nilai T : "); // tinggi 
+		int t = input.nextInt();
+		
+		// proses kalkulasi jari jari tabung 
+		float pi = 3.14f;
+		int r2 = r * r;
+		float voltabung = pi * r2 * t;
+		
+		// proses kalkulasi luas tabung
+		int rt = r + t;
+	   float luastabung = (pi * r * rt) * 2;
+	   
+	   // hasil output volume dan luas tabung 
+	   System.out.println("Volume tabung    : " + voltabung );
+	   System.out.println("Luas tabung      : " + luastabung);
+	   	
+	}
+	
+	public void bola() {
+		System.out.println("Masukkan nilai jari - jari : ");
+		int jari2 = input.nextInt();
+		int r3 = jari2 * jari2 * jari2;
+		int r2 = jari2 * jari2;
+		float pi = 3.14f;
+		
+		// proses kalkulasi volume bola 
+		float volbola = 4/3 * pi * r3;
+		
+		// proses kalkulasi luas bola 
+		float luasbola = pi * r2 * 4;
+	    
+		// hasil volume dan luas bola 
+		System.out.println("Volume bola     : " + volbola);
+		System.out.println("Luas bola       : " + luasbola);
+	}
+	
+}
+}
