@@ -1,0 +1,137 @@
+Java project, the project is about making a diamond shape triangle, and calculate numbers using slovin formula. 
+Consists of 3 class. 
+
+main, segitiga, slovin. 
+
+
+// JAVA ECLIPSE 1. 
+
+** MAIN CLASS **
+
+import java.util.*;
+public class main { // main class -> always contain main function. 
+
+	static Scanner input = new Scanner(System.in); // input module. 
+	
+	public static void main (String[] args) { // main function -> start phase. 
+		
+	    System.out.println("MENU");
+		System.out.println("1. Triangle Shape ");
+		System.out.println("2. Slovin Formula ");
+		System.out.println("Pilihan :");
+		int pil = input.nextInt(); 
+		
+		switch(pil) {
+		case 1:
+			// triangle shape. -> mesti dipanggil dulu. 
+			segitiga ape = new segitiga();
+			ape.triangle();
+			break;
+			
+		case 2:
+			 //slovin formula. -> mesti dipanggil dulu. 
+			slovin a = new slovin();
+			a.slovinskuy();
+			break;
+			
+		default: 
+			System.out.println("Maaf pilihan nya gaada bro hehe");
+		}
+	}
+}
+
+** CLASS SEGITIGA ** 
+
+// JAVA ECLIPSE 1.
+
+import java.util.*;
+
+public class segitiga { // ClassSegitiga
+	static Scanner input = new Scanner(System.in); // Input Module 
+	
+	// variable global i,j,n
+	// n = tinggiSegitiga
+	
+	public void triangle() { // objek
+		
+		System.out.println("Masukkan tinggi segtiga :");
+		int n = input.nextInt();
+		
+		for(int i=1; i<=n; i++) // ini buat bagian kiri atas
+	    {
+           for(int j=1; j<=n-i+1; j++)
+	    {
+	       System.out.print("*");
+	    } 
+           for(int k=0; k<=2*i-2; k++) // Kosongan segitiga bagian atas.
+		{
+		   System.out.print(" ");
+		} 
+           
+	    for(int j=1; j<=n-i+1; j++) // segitiga bagian atas kanan. 
+	    {
+		   System.out.print("*");
+        } 
+		   System.out.println();
+	    }
+		
+		
+		for(int i=7; i>=1; i--) // segitiga bagian bawah kiri
+		{
+			for(int j=i; j<=n; j++)
+	    {
+			System.out.print("*");
+		} 
+			for(int k=0; k<=(2*i)-2; k++) // Kosongan segitiga bagian bawah. 
+	    {
+			System.out.print(" ");
+	    } 
+			
+		    for(int j=i; j<=n; j++) // segitiga bagian bawah kanan. 
+	    {
+			System.out.print("*");
+	    } 
+		    System.out.println();
+	    }
+}
+	
+	
+	// yeaa boi. 
+}
+
+** CLASS SLOVIN FORMULA ** 
+
+// JAVA ECLIPSE 1.
+
+import java.util.*;
+
+public class slovin { // SlovinClass
+	static Scanner input = new Scanner(System.in); // Input Module 
+	
+	public void slovinskuy() { // objek 
+		System.out.println("Masukkan jumlah populasi :");
+		int populasi = input.nextInt(); // 80 
+		
+		
+		System.out.println("Masukkan jumlah toleransi error (0.01 / 0.05 / 0.1) :");
+		double kuy = input.nextDouble(); // 0.05
+		double perkalian = kuy * kuy; // 0.05 * 0.05 = 0.0025
+		
+		
+		double bagi = ( perkalian * populasi ) + 1;
+		double hasil =  populasi / bagi;
+		System.out.println("Hasil nya :" + hasil); 
+		
+		// bagi = tampungan hasil kali perkalian * populasi + 1.
+		// kuy = inputan toleransi error. 
+		// populasi = jumlah orang. 
+		// hasil = angka hasil jumlah orang / nilai tampungan. 
+	}
+	// yeaa 
+}
+
+		
+	
+
+
+
