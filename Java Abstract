@@ -1,0 +1,107 @@
+Java project, the project is about calculating a total price of a food, and also include the price of a tax. 
+Consists of 3 classes. 
+Using Abstract concepts of OOP.
+
+
+** MAIN CLASS ** 
+import java.util.*;
+
+public class mainbaru { // class main 
+
+	static Scanner input = new Scanner(System.in); // input module integer.
+	static Scanner sc = new Scanner(System.in); // input module char.
+	
+    static pesananbaru pe = new pesananbaru();
+	static int total = 0; // biar bisa dipake di banyak class lain. 
+	
+	
+	public static void main(String[] args) { // main class
+	   menu(); // menu
+       pe.cetak(); // memanggil method cetak dari class pesanan baru. 
+	}
+	
+	public static void menu() { // method menu.
+		char ulang = 'y';
+		
+		while (ulang == 'y') {
+		System.out.println("MENU");
+		System.out.println("1. Tahu Telor");
+		System.out.println("2. Mie Ayam");
+		System.out.println("3. Nasi Goreng");
+		System.out.println("4. Lemon Tea");
+		System.out.println("5. Ice Tea");
+		System.out.print("Masukkan pilihan anda :");
+		int pil = input.nextInt();
+		
+		System.out.print("Jumlah :");
+		int jumlah = input.nextInt();
+		
+		total = total + pe.hitung(jumlah,pil); // hitung harga sesuai dengan method hitung di class pe.
+		
+		System.out.print("Pesanan terinput, pilih lagi ? [y/n]");
+		ulang = sc.next().charAt(0); // input untuk char
+	    System.out.print("\n");
+
+	}
+}
+}
+
+
+** CLASSES PENGHASILAN BARU ** 
+
+public abstract class penghasilanbaru { // class parent abstract class, method hitung dan cetak bisa diakses di class pesanan baru.
+     public abstract int hitung(int jumlah, int pil); // abstract method. 
+     public abstract void cetak();
+}
+
+
+** PESANAN BARU ** 
+import java.util.Scanner;
+
+public class pesananbaru extends penghasilanbaru { // class child
+	
+	static Scanner input = new Scanner(System.in); // input module integer 
+	static Scanner sc = new Scanner(System.in); // input module char
+	
+	@Override
+    public int hitung(int jumlah, int pil) { // hitung harga makannan nya, bawa parameter dari class sebelah.
+    	// ini ga dipanggil ke main, buat ngitung doang
+    	int harga = 0;
+    	
+    	switch(pil) { // set pilihan sesuai harga makanan nya. // sama sesuai variabel pil -> utk tau makanan nya apa baru dikali jumlah.
+    	case 1: // tahu telor 
+    		harga = 15000 * jumlah;
+    		break;
+    		
+    	case 2: // mie ayam 
+    		harga = 12000 * jumlah;
+    		break;
+    		
+    	case 3: // nasgor
+    	    harga = 14000 * jumlah;
+    	    break;
+    	    
+    	case 4: // lemon tea 
+    		harga = 16000 * jumlah;
+    		break;
+    		
+    	case 5: // ice tea 
+    		harga = 10000 * jumlah;
+    		break;	
+    }
+	   return harga; 	
+	}
+
+	@Override
+	public void cetak() { // kalkulasi harga akhir buat dipanggil ke main. 
+		int potpajak = (int) (0.1 * mainbaru.total);  // pajak 10 % -> 3000 
+		int tothar = potpajak + mainbaru.total;
+		//hargafinal = mainbaru.total + ((10 * mainbaru.total) / 100);
+		System.out.println("Total harga pesanan anda + (pajak 10 %) : " + tothar);
+	}
+	// abis boi.
+}
+
+
+
+
