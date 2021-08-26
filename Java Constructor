@@ -1,0 +1,67 @@
+Java project, the project is about making a program that can counts basic calculations, using a constructor as a special method. 
+Consists of 2 classes. 
+
+** MAIN CLASS ** 
+
+
+// JAVA CONSTRUCTOR.
+
+import java.util.Scanner; // input 
+
+public class mainconst { // class kita 
+    static Scanner input = new Scanner(System.in); // buat input. 
+
+	public static void main(String[] args) { // objek kita 
+		int x,y;
+		System.out.println("Masukkan nilai X : "); 
+		x = input.nextInt(); // variabel nampung nilai 1.
+			
+	    System.out.println("Masukkan nilai Y : ");
+	    y = input.nextInt(); // variabel nampung nilai 2.
+		
+	    operatore a1 = new operatore();
+	    // parameter hanya dilemparkan melalui constructor.
+        a1.semua(x,y);
+       
+   }
+ // yeaa boi 
+}
+
+** OPERATOR CLASS ** 
+
+// JAVA CONSTRUCTOR.
+
+import java.util.Scanner;
+
+public class operatore { // pusat operasi kalkulasi. 
+
+	static Scanner input = new Scanner(System.in); // modul input
+	
+	// A1
+	// KONSTRUKTOR 1.
+	public operatore() {  // konstruktor 1 
+		
+		System.out.println("Kalkulator Sederhana");
+	}
+
+	// KONSTRUKTOR 2
+	public void semua(int x, int y) { // semua proses perhitungan. 
+	
+		// TAMBAH 
+		int jumlah =  x + y;
+		System.out.println("Tambah : " + jumlah);
+		
+		// KURANG
+		int hasilkurang = x - y;
+		System.out.println("Kurang : " + hasilkurang);
+		
+		// KALI 
+		int perkalian =  x * y;
+		System.out.println("Kali : " + perkalian);
+				
+		// BAGI  
+		float divide = x / y; 
+		System.out.println("Bagi : " + divide);
+	}
+	
+} // yeaa boi
