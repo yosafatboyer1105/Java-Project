@@ -1,5 +1,6 @@
 # Java-Project
 
 Projek - projek kuliah, make bahasa JAVA, sekaligus belajar OOP. 
-Pemograman Orientasi objek 
+Analisis dan Perancangan SI. 
+Pemograman Berorientasi Objek.  
 Semester 4. 
